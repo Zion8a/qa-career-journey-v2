@@ -1,0 +1,29 @@
+name: API Tests
+
+on:
+  push:
+    paths:
+      - 'part-05-newman/**'
+      - '.github/workflows/api-tests.yml'
+  workflow_dispatch:
+
+jobs:
+  newman-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Postman collection
+        run: |
+          cd part-05-newman
+          newman run restful-booker-tests.postman_collection.json
