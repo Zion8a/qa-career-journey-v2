@@ -3,6 +3,8 @@
 ## Syfte
 Denna del bygger vidare på Playwright-grunden från part-07. Målet är att arbeta mer konkret med elementidentifiering och assertions i UI-testautomation.
 
+Byggde vidare på Playwright-grunden med fokus på robust elementidentifiering och tydliga assertions. Verifierade synliga länkar, navigation, URL och innehåll i UI med lokalt körbara tester i Chromium.
+
 ## Det här har jag gjort
 - satt upp ett nytt Playwright-delprojekt i TypeScript
 - arbetat med robust elementhantering med `getByRole`
