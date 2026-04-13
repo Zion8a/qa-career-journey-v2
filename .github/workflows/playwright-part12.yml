@@ -1,0 +1,37 @@
+name: Playwright Part 12 Tests
+
+on:
+  push:
+    paths:
+      - 'part-12-playwright-ci-and-professional-packaging/**'
+      - '.github/workflows/playwright-part12.yml'
+  pull_request:
+    paths:
+      - 'part-12-playwright-ci-and-professional-packaging/**'
+      - '.github/workflows/playwright-part12.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: part-12-playwright-ci-and-professional-packaging
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
+        run: npx playwright test --project=chromium
